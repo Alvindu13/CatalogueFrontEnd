@@ -1,0 +1,56 @@
+
+
+<div class="card">
+  <div class = "card-header">
+    Gestion des categories  </div>
+
+  <div class="card-body">
+    <button class="btn btn-success" (click) ="onNewCat()" >
+      <span class="fas fa-plus"></span>
+    </button>
+
+    <p></p>
+
+    <div class="col-6" *ngIf="mode == 'new-cat'">
+      <form #f = "ngForm" (ngSubmit)="onSaveCat(f.value)">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" ngModel class="form-control">
+        </div>
+        <button class="btn btn-success" type="submit">Ajouter</button>
+      </form>
+      <p></p>
+    </div>
+    <div class="col-6" *ngIf = "mode == 'edit-cat'">
+      <form #f = "ngForm" (ngSubmit)="onUpdateCat(f.value)">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="name" ngModel class="form-control" [(ngModel)]="currentCategorie.name">
+        </div>
+        <button class="btn btn-success" type="submit">Editer</button>
+      </form>
+      <p></p>
+    </div>
+  <div *ngIf= "mode == 'list'">
+    <table class="table" *ngIf="categories ">
+    <tr>
+      <th>Name</th>
+    </tr>
+    <tr *ngFor="let c of categories._embedded.categories">
+      <td>{{c.name}}</td>
+      <td>
+        <button class="btn btn-danger" (click)="onDeleteCat(c)">
+          <span class="fas fa-times"></span>
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-warning" (click)="onEditCat(c)">
+          <span class="far fa-edit"></span>
+        </button>
+      </td>
+    </tr>
+  </table>
+  </div>
+
+    </div>
+</div>

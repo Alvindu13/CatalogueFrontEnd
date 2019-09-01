@@ -12,21 +12,23 @@
 
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown">
+      <li *ngIf="isAuthenticated() == true" class="nav-item dropdown" >
         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
           Admin
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Gestion des catégories</a>
-          <a class="dropdown-item" href="#">Gestion des produits</a>
-          <a class="dropdown-item" href="#">Gestion des utilisateurs</a>
+          <a *ngIf="isAdmin()" class="dropdown-item" routerLink="/adminCategories">Gestion des catégories</a>
+          <a class="dropdown-item" routerLink="/adminProduits">Gestion des produits</a>
+          <a *ngIf="isAdmin()" class="dropdown-item" routerLink="/adminUsers">Gestion des utilisateurs</a>
         </div>
       </li>
     </ul>
 
     <ul class="nav navbar-nav ml-auto">
       <li class="nav-item float-right ">
-        <a class="nav-link" routerLink="/login">Login</a>
+        <a *ngIf="!isAuthenticated()" class="nav-link" routerLink="/login">Login</a>
+        <a *ngIf="isAuthenticated()" class="nav-link btn" (click) = "logout()">Logout</a>
+
       </li>
     </ul>
   </nav>
@@ -38,20 +40,17 @@
 <br>
 
 
-<div class = "container ">
+<div class = "container-fluid ">
   <div class="row">
 
-  <div class = "col-md-3 text-center">
-    <app-categories></app-categories>
+      <div class = "col-2 offset-1 text-center">
+        <app-categories></app-categories>
+      </div>
+
+      <div class = "col-8">
+        <router-outlet></router-outlet>
+      </div>
+
   </div>
-
-  <div class = "col-md-5">
-    <router-outlet>
-
-
-    </router-outlet>
-  </div>
-  </div>
-
 
 </div>

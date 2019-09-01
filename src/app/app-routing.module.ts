@@ -2,11 +2,20 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ProduitsComponent} from './produits/produits.component';
 import {LoginComponent} from './login/login.component';
+import {AdminCategoriesComponent} from './admin-categories/admin-categories.component';
+import {AdminProduitsComponent} from './admin-produits/admin-produits.component';
+import {AdminUsersComponent} from './admin-users/admin-users.component';
 
 
 const routes: Routes = [
+  {path: 'products', component: ProduitsComponent},
+  {path: '', redirectTo: 'products', pathMatch: 'full'},
+
   {path : 'products/:urlProds', component: ProduitsComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'adminCategories', component: AdminCategoriesComponent},
+  {path: 'adminProduits', component: AdminProduitsComponent},
+  {path: 'adminUsers', component: AdminUsersComponent},
 ];
 
 @NgModule({

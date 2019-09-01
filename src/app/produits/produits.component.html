@@ -1,0 +1,44 @@
+
+<div *ngIf="products">
+  <div class="col-5 list-inline-item" *ngFor="let p of products._embedded.products">
+
+      <div class="bd-highlight mb-5 ml-5">
+
+          <div class="card card-default">
+
+            <div class="card-header text-white text-center" style="background: indianred ; font-weight: bold">{{p.name}}</div>
+
+            <div class="card-body">
+              
+              <table>
+                <tr>
+                  <td rowspan="3">
+                    <img height="100" src="{{this.catalogueService.host + '/products/photoProduct/' + p.id}}" alt="">
+                  </td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td>{{p.description}}</td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                  <td>{{p.currentPrice | number : '0.2'}}</td>
+                </tr>
+
+              </table>
+
+            </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
