@@ -21,6 +21,8 @@
             "aot": false,
             "assets": [
               "src/favicon.ico",
+              "src/assets/open-iconic/svg",
+              "src/assets/open-iconic/png",
               "src/assets"
             ],
             "styles": [
@@ -85,6 +87,7 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
+              "src/assets/open-iconic/svg",
               "src/assets"
             ],
             "styles": [

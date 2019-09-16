@@ -17,6 +17,17 @@
                   </td>
                 </tr>
 
+                <p>
+                  <button (click)="onEditPhoto(p)">
+                    <img width="20px" src="assets/svg/pencil.svg" alt="pencil">
+                  </button>
+                </p>
+                <p *ngIf="editPhoto==true && currentProduct == p">
+                  <input type="file" (change)="onSelectedFile($event)">
+                  <button style="margin-top: 10px" class="btn btn-success" (click)="uploadPhoto()">Upload la photo</button>
+                </p>
+
+
                 <tr>
                   <td></td>
                   <td>{{p.description}}</td>
@@ -26,6 +37,7 @@
                   <td></td>
                   <td>{{p.currentPrice | number : '0.2'}}</td>
                 </tr>
+
 
               </table>
 
